@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Graduation Day ✦ Lời mời 3D đặc biệt</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#f9f5f0" />
+  <meta name="description" content="Một lời mời tốt nghiệp thật đặc biệt — được mang đến bởi một linh vật 3D đáng yêu." />
+  <meta property="og:title" content="You're Invited · Graduation Day" />
+  <meta property="og:description" content="Một người bạn 3D nhỏ có một lời mời dành riêng cho bạn!" />
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./src/styles.css" />
+  <!-- Import map allows a zero-install preview via a simple local HTTP server.
+       Vite instead bundles the same packages locally for production. -->
+  <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js","gsap":"https://cdn.jsdelivr.net/npm/gsap@3.13.0/index.js"}}</script>
+  <script type="module" src="./src/ui.js"></script>
+</head>
+<body class="guest-pending">
+  <div class="noise-overlay" aria-hidden="true"></div>
+  <!-- First step: visitors enter their name before the 3D mascot appears. -->
+  <section class="guest-gate" id="guest-gate" aria-labelledby="gate-title">
+    <div class="gate-orb gate-orb--lilac" aria-hidden="true"></div>
+    <div class="gate-orb gate-orb--peach" aria-hidden="true"></div>
+    <div class="gate-sparkle gate-sparkle--one" aria-hidden="true">✳</div>
+    <div class="gate-sparkle gate-sparkle--two" aria-hidden="true">✧</div>
+    <div class="gate-sparkle gate-sparkle--three" aria-hidden="true">✦</div>
+    <div class="gate-sparkle gate-sparkle--four" aria-hidden="true">✧</div>
+
+    <div class="gate-topbar">
+      <span class="gate-brand"><span class="brand-mark" aria-hidden="true">✳</span> little <strong>milestone</strong><span class="brand-period">.</span></span>
+      <span class="gate-edition">✦ &nbsp; CLASS OF <span data-bind="classYear">2026</span></span>
+    </div>
+
+    <div class="gate-layout">
+      <div class="gate-copy">
+        <p class="gate-eyebrow"><span class="gate-eyebrow__line"></span> A LITTLE NOTE FOR YOU</p>
+        <h1 id="gate-title" class="gate-title">Psst...<br/><em>có thư cho bạn!</em><span class="gate-title-star" aria-hidden="true">✳</span></h1>
+        <p class="gate-description">Có một bạn <span id="mascot-name-gate">linh vật</span> nhỏ đang chuẩn bị mang đến bạn một bất ngờ. Nhưng trước tiên, cho mình biết tên người nhận thư nha! ♡</p>
+
+        <form id="guest-form" class="gate-form" novalidate>
+          <label for="guest-name">Mình nên viết tên ai lên thiệp nhỉ?</label>
+          <div class="gate-input-wrap">
+            <span aria-hidden="true">✉</span>
+            <input id="guest-name" name="guestName" type="text" inputmode="text" autocomplete="name" maxlength="60" placeholder="Nhập tên của bạn..." aria-describedby="guest-hint guest-error" required />
+          </div>
+          <p class="gate-error" id="guest-error" role="alert" hidden>Bạn hãy nhập tên để nhận thiệp nhé!</p>
+          <button class="button button--primary gate-submit" id="guest-submit" type="submit">
+            <span>Nhận lời mời dành riêng cho mình</span><span class="gate-submit__arrow" aria-hidden="true">↗</span>
+          </button>
+          <p class="gate-privacy" id="guest-hint"><span aria-hidden="true">✧</span> Tên chỉ được dùng để viết thiệp trong trình duyệt, không gửi lên máy chủ.</p>
+        </form>
+        <div class="gate-signature"><span class="gate-signature__hearts" aria-hidden="true">♡ ♡</span><span>Một ngày đặc biệt sẽ vui hơn khi có bạn.</span></div>
+      </div>
+
+      <div class="gate-art" aria-hidden="true">
+        <div class="gate-art-circle"></div>
+        <div class="gate-art-ring gate-art-ring--outer"></div>
+        <div class="gate-art-ring gate-art-ring--inner"></div>
+        <div class="gate-art-star gate-art-star--one">✦</div>
+        <div class="gate-art-star gate-art-star--two">✳</div>
+        <div class="gate-art-star gate-art-star--three">✧</div>
+        <div class="gate-envelope-art">
+          <div class="gate-letter-art">
+            <span>FOR SOMEONE SPECIAL</span>
+            <div class="gate-letter-art__heart">♡</div>
+            <strong>You're<br/>invited!</strong>
+          </div>
+          <div class="gate-envelope-art__back"></div>
+          <div class="gate-envelope-art__inside"></div>
+          <div class="gate-envelope-art__left"></div>
+          <div class="gate-envelope-art__right"></div>
+          <div class="gate-envelope-art__bottom"></div>
+          <div class="gate-envelope-art__seal">✳</div>
+        </div>
+        <div class="gate-art-note"><span>✧</span> a little magic is on its way <span>✧</span></div>
+      </div>
+    </div>
+    <div class="gate-bottomline"><span>MADE WITH ♡ & A LITTLE BIT OF MAGIC</span><span>YOUR INVITATION AWAITS &nbsp;✦</span></div>
+  </section>
+
+  <div class="site-shell" id="site-shell" inert>
+    <header class="header">
+      <a class="brand" href="#top" aria-label="Về đầu trang">
+        <span class="brand-mark" aria-hidden="true">✳</span>
+        <span>little <strong>milestone</strong><span class="brand-period">.</span></span>
+      </a>
+      <div class="header-actions">
+        <span class="header-tag"><span class="header-tag__star">✦</span> CLASS OF <span data-bind="classYear">2026</span></span>
+        <button id="replay-intro" class="icon-button" type="button" title="Xem lại hoạt ảnh" aria-label="Xem lại hoạt ảnh">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11a9 9 0 1 1 2.7 6.4"/><path d="M3 4v7h7"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-ambient hero-ambient--one" aria-hidden="true"></div>
+        <div class="hero-ambient hero-ambient--two" aria-hidden="true"></div>
+        <div class="ambient-star ambient-star--one" aria-hidden="true">✧</div>
+        <div class="ambient-star ambient-star--two" aria-hidden="true">✦</div>
+        <div class="ambient-star ambient-star--three" aria-hidden="true">✳</div>
+        <div class="ambient-star ambient-star--four" aria-hidden="true">✧</div>
+
+        <div class="stage" id="mascot-stage" aria-label="Hoạt ảnh linh vật 3D trao thiệp mời">
+          <canvas id="mascot-canvas" aria-hidden="true"></canvas>
+          <div class="css-mascot" aria-hidden="true">
+            <div class="css-mascot__shadow"></div>
+            <div class="css-mascot__wing css-mascot__wing--left"></div>
+            <div class="css-mascot__wing css-mascot__wing--right"></div>
+            <div class="css-mascot__body"><div class="css-mascot__belly"></div><div class="css-mascot__bow">✦</div></div>
+            <div class="css-mascot__head"><div class="css-mascot__face"></div><i class="css-mascot__eye css-mascot__eye--left"></i><i class="css-mascot__eye css-mascot__eye--right"></i><i class="css-mascot__cheek css-mascot__cheek--left"></i><i class="css-mascot__cheek css-mascot__cheek--right"></i><div class="css-mascot__beak"></div></div>
+            <div class="css-mascot__hat"><div class="css-mascot__hat-top"></div><span class="css-mascot__tassel"></span></div>
+            <div class="css-mascot__feet css-mascot__feet--left"></div><div class="css-mascot__feet css-mascot__feet--right"></div>
+          </div>
+          <div class="stage-hint" id="stage-hint" aria-hidden="true"><span>✉</span> Có thư cho bạn nè!</div>
+        </div>
+
+        <div class="hero-content">
+          <div class="eyebrow"><span class="eyebrow-line"></span><span>✦ A SPECIAL DELIVERY</span></div>
+          <p class="hero-kicker">Một chiếc thiệp nhỏ, một niềm vui to</p>
+          <h1 id="hero-title">I did it<span class="hero-exclamation">!</span><br /><em>I'm graduating</em><span class="hero-sparkle">✳</span></h1>
+          <p class="hero-desc">Mình sắp tốt nghiệp rồi! Bạn <strong id="mascot-name-hero">Pingu</strong> đáng yêu đang mang đến bạn một lời mời thật đặc biệt.</p>
+          <p class="hero-recipient">✉ &nbsp; THƯ GỬI <strong id="hero-guest-name"></strong> <button type="button" id="change-guest" class="guest-change" aria-label="Đổi tên người nhận thiệp">✎ Đổi tên</button></p>
+          <div class="hero-ctas">
+            <button class="button button--primary" id="open-invite" type="button"><span class="button-mail">✉</span> Nhận thiệp mời <span class="button-arrow">↗</span></button>
+            <span class="cta-caption"><span class="cta-caption__sparkle">✦</span> Một bất ngờ đang chờ bạn...</span>
+          </div>
+          <div class="hero-status"><span class="live-dot"></span><span id="hero-status-text">Linh vật đang mang thư tới...</span></div>
+          <div class="mascot-picker" id="mascot-picker"><span class="mascot-picker__title">✦ CHỌN BẠN MANG THƯ</span><div class="mascot-options" id="mascot-options" role="group" aria-label="Chọn linh vật 3D"></div></div>
+        </div>
+
+        <div class="vertical-caption" aria-hidden="true">A LITTLE MAGIC FOR A BIG DAY — 2026</div>
+        <div class="hero-footer"><span>MADE WITH ♡ & A LITTLE BIT OF MAGIC</span><span class="hero-footer__middle">✦</span><span>SCROLL TO DISCOVER <span class="bounce-arrow">↓</span></span></div>
+      </section>
+
+      <section class="letter-preview" id="about" aria-labelledby="about-title">
+        <div class="letter-preview__inner">
+          <div class="letter-preview__art" aria-hidden="true"><span class="art-star art-star--one">✧</span><div class="art-orbit"><div class="art-orbit__inner">✉</div></div><span class="art-star art-star--two">✳</span></div>
+          <div class="letter-preview__copy"><div class="mini-label">THE NEXT CHAPTER</div><h2 id="about-title">Những khoảnh khắc đẹp nhất<br />là khi có <em>bạn ở bên.</em></h2><p>Một hành trình đáng nhớ đang khép lại. Mình muốn chia sẻ niềm vui này cùng những người thật đặc biệt — và bạn chính là một trong số đó.</p><button class="text-link" id="open-invite-bottom" type="button">Khám phá tấm thiệp <span>↗</span></button></div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer"><span>✳ little milestone.</span><span>Made to celebrate your big little moments.</span><span>© <span data-bind="classYear">2026</span></span></footer>
+  </div>
+
+  <dialog class="invitation-dialog" id="invitation-dialog" aria-labelledby="invitation-title">
+    <div class="dialog-backdrop-decor" aria-hidden="true"></div>
+    <div class="invitation-window">
+      <button class="dialog-close" id="close-dialog" type="button" aria-label="Đóng thiệp mời">×</button>
+      <div class="invitation-cover">
+        <div class="cover-grain" aria-hidden="true"></div>
+        <div class="cover-ornament cover-ornament--top" aria-hidden="true">✧ &nbsp; ✦ &nbsp; ✧</div>
+        <div class="cover-seal" aria-hidden="true"><span class="cover-mascot-symbol" id="cover-mascot-symbol">🐧</span></div>
+        <span class="cover-edition">THE GRADUATION EDITION</span>
+        <div class="cover-title">The best<br /><em>is yet to come.</em></div>
+        <div class="cover-recipient">DÀNH RIÊNG CHO <strong id="cover-guest-name"></strong></div>
+        <div class="cover-bottom"><span>CLASS OF <span data-bind="classYear">2026</span></span><span>✳</span></div>
+        <div class="cover-ornament cover-ornament--bottom" aria-hidden="true">✧ &nbsp; ✦ &nbsp; ✧</div>
+      </div>
+      <div class="invitation-body">
+        <div class="invite-eyebrow"><span>✦</span> YOU ARE CORDIALLY INVITED <span>✦</span></div>
+        <h2 id="invitation-title">Lễ tốt nghiệp<br /><em>của mình!</em></h2>
+        <p class="invitation-subtitle">Một lời mời bé xinh dành riêng cho bạn ♡</p>
+        <div class="invited-recipient">
+          <span class="invited-recipient__label">✦ TRÂN TRỌNG KÍNH MỜI ✦</span>
+          <strong id="invited-guest-name"></strong>
+          <span class="invited-recipient__sub">đến tham dự lễ tốt nghiệp của</span>
+        </div>
+        <div class="invite-divider"><span>✳</span></div>
+        <p class="invite-graduate" data-bind="graduate">TÊN CỦA BẠN</p>
+        <p class="invite-school" data-bind="school">Trường đại học của bạn</p>
+        <p class="invite-message" data-bind="invitationMessage">Sau bao ngày nỗ lực, ngày đặc biệt ấy cuối cùng cũng đến. Mình rất mong có bạn ở bên để cùng lưu lại một kỷ niệm thật đẹp!</p>
+        <div class="invite-details">
+          <div class="invite-detail"><span class="detail-icon" aria-hidden="true">◷</span><div><span class="detail-label">THỜI GIAN</span><strong id="display-date">20 tháng 12, 2026</strong><span id="display-time">09:00 – 11:30</span></div></div>
+          <div class="invite-detail"><span class="detail-icon" aria-hidden="true">⌂</span><div><span class="detail-label">ĐỊA ĐIỂM</span><strong data-bind="venue">Hội trường chính</strong><span data-bind="address">Địa chỉ tổ chức lễ tốt nghiệp</span></div></div>
+        </div>
+        <p class="demo-note" id="demo-note">✎ Dữ liệu minh họa · Hãy cập nhật thông tin trong <code>src/config.js</code> trước khi gửi thiệp.</p>
+        <div class="invitation-actions"><button id="calendar-btn" class="button button--primary button--small" type="button">＋ Lưu lịch hẹn</button><button id="map-btn" class="button button--outline button--small" type="button">↗ Xem bản đồ</button><button id="share-btn" class="button button--outline button--small" type="button">⧉ Sao chép link</button></div>
+        <div class="invite-rsvp"><p>Hẹn gặp bạn vào ngày đặc biệt nhé! <span>♡</span></p><button class="text-link" id="rsvp-btn" type="button">Xác nhận tham dự / Gửi lời chúc ↗</button></div>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog class="wish-dialog" id="wish-dialog" aria-labelledby="wish-title">
+    <div class="wish-window"><button id="wish-close" class="dialog-close" type="button" aria-label="Đóng cửa sổ">×</button><span class="wish-icon">✉</span><h2 id="wish-title">Gửi một chút yêu thương</h2><p>Để lại lời chúc xinh xắn cho ngày tốt nghiệp nhé!</p>
+      <form id="wish-form"><label for="wish-name">Tên của bạn</label><input id="wish-name" name="name" autocomplete="name" maxlength="80" placeholder="Ví dụ: Người bạn dễ thương" required /><label for="wish-message">Lời chúc</label><textarea id="wish-message" name="message" rows="3" maxlength="600" placeholder="Chúc mừng tốt nghiệp! ..." required></textarea><button class="button button--primary" id="wish-submit" type="submit">Gửi lời chúc ♡</button></form>
+      <p class="wish-privacy" id="wish-privacy">Lời chúc sẽ được sao chép để bạn gửi trực tiếp (chưa có máy chủ nhận lời nhắn).</p>
+    </div>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

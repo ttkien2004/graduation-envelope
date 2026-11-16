@@ -1,0 +1,20 @@
+{
+  "name": "graduation-3d-mascot-studio",
+  "private": true,
+  "version": "2.0.0",
+  "type": "module",
+  "description": "Interactive Vietnamese graduation invitation featuring 3 animated Three.js mascots",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "vite build",
+    "preview": "vite preview --host 0.0.0.0",
+    "test": "node --test tests/*.test.mjs"
+  },
+  "dependencies": {
+    "three": "^0.180.0",
+    "gsap": "^3.13.0"
+  },
+  "devDependencies": {
+    "vite": "^7.0.0"
+  }
+}
